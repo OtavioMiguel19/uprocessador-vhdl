@@ -1,0 +1,45 @@
+Codificacoes
+
+Binario
+XXXX X XXXX XXXX
+
+13 bits
+
+12 - 8 = OPCODE
+8 = Seletor de Constante ou Registrador
+7 - 4 = Constante ou Registrador
+3 - 0 = Registrador destino
+
+
+Opcodes
+0001 0 ADD - 0001 1 ADC - 0010 1 DEC - 1111 0 JMP - 0100 0 MOV
+
+=====================================
+ADD SRC, DST => DST
+SRC + DST => DST
+
+0001 0 0011 0101 - add r3, r5
+0001 0 0100 0101 - add r4, r5
+=====================================
+ADC CONST, DST => DST
+CONST + DST => DST
+
+0001 1 0101 0011 - adc #5, r3
+0001 1 1000 0100 - adc #8, r4
+=====================================
+DEC DST => DST
+DST - 1 => DST
+
+0010 1 0001 0101 - rec r5
+=====================================
+MOV SRC, DST => DST
+SRC => DST
+
+0100 0 0101 0011 - mov r5, r3
+=====================================
+JMP DST
+Jump
+
+1111 0 0001 0100 - jmp 20
+1111 0 0000 0011 - jmp 3
+=====================================
