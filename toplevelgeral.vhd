@@ -57,7 +57,9 @@ ARCHITECTURE a_toplevelgeral OF toplevelgeral IS
             write_enable_x_lt_y_register : OUT std_logic;
             alu_sel : OUT unsigned(2 DOWNTO 0);
             entrada : IN unsigned(12 DOWNTO 0);
-            reg0, reg1, regw : OUT unsigned(2 DOWNTO 0)
+            reg0, reg1, regw : OUT unsigned(2 DOWNTO 0);
+            MemWrite : OUT std_logic;
+            MemRead : OUT std_logic
         );
     END COMPONENT;
 
@@ -142,6 +144,23 @@ ARCHITECTURE a_toplevelgeral OF toplevelgeral IS
         );
     END COMPONENT;
 
+    COMPONENT ram IS
+        PORT (
+            clk : IN std_logic;
+            endereco : IN unsigned(6 DOWNTO 0);
+            wr_en : IN std_logic;
+            dado_in : IN unsigned(15 DOWNTO 0);
+            dado_out : OUT unsigned(15 DOWNTO 0)
+        );
+    END COMPONENT;
+    COMPONENT mux2e7bits IS
+        PORT (
+            entrada1, entrada2 : IN unsigned(6 DOWNTO 0);
+            saida : OUT unsigned(6 DOWNTO 0);
+            seletor : IN std_logic
+        );
+    END COMPONENT;
+
     SIGNAL saida_pc, saida_somaum : unsigned(8 DOWNTO 0);
 
     SIGNAL fetch, decode, execute : std_logic;
@@ -188,9 +207,21 @@ ARCHITECTURE a_toplevelgeral OF toplevelgeral IS
 
     SIGNAL branch_delta_8bit : unsigned(8 DOWNTO 0);
 
+    SIGNAL MemAddress : unsigned(6 DOWNTO 0);
+
+    SIGNAL MemWrite : std_logic;
+
+    SIGNAL MemRead : std_logic;
+
+    SIGNAL MemWriteData : unsigned(15 DOWNTO 0);
+
+    SIGNAL MemReadData : unsigned(15 DOWNTO 0);
+
+    SIGNAL DataMuxUlaRam : unsigned(15 DOWNTO 0);
+
 BEGIN
     resized_constant <= resize(unsigned(saida_reg_rom(7 DOWNTO 4)), 16);
-    branch_delta_8bit <= '0' & saida_reg_rom(7 downto 0);
+    branch_delta_8bit <= '0' & saida_reg_rom(7 DOWNTO 0);
 
     maisum : somaum
     PORT MAP(
@@ -238,7 +269,9 @@ BEGIN
         reg0 => s_reg0,
         reg1 => s_reg1,
         regw => s_regw,
-        write_enable_x_lt_y_register => write_enable_x_lt_y_register
+        write_enable_x_lt_y_register => write_enable_x_lt_y_register,
+        MemWrite => MemWrite,
+        MemRead => MemRead
     );
 
     mux_pc_top : mux_pc
@@ -275,7 +308,7 @@ BEGIN
         reg_rsel0 => s_reg0,
         reg_rsel1 => s_reg1,
         reg_wsel => s_regw,
-        data_write => saida_reg_ula,
+        data_write => DataMuxUlaRam,
         rd0 => saida_banco0,
         rd1 => saida_banco1
     );
@@ -310,17 +343,41 @@ BEGIN
     jump_control : jump_controller
     PORT MAP(
         ula_x_lt_y => x_lt_y_from_reg,
-        opcode => saida_reg_rom(12 downto 9),
+        opcode => saida_reg_rom(12 DOWNTO 9),
         atual_endereco_pc => saida_mux,
-        go_back => saida_reg_rom(8 downto 8),
+        go_back => saida_reg_rom(8 DOWNTO 8),
         delta_endereco => branch_delta_8bit,
         resultado => saida_jump_controller
     );
 
-    tb_estado <= estado;
-    tb_saida_pc <= saida_pc;
-    tb_saida_rom <= saida_rom;
-    tb_rd1 <= saida_banco1;
-    tb_rd0 <= saida_banco0;
-    tb_saida_ula <= saida_ula;
+    hyperx8gb : ram
+    PORT MAP(
+        clk => clk,
+        endereco => MemAddress,
+        wr_en => MemWrite,
+        dado_in => saida_banco0,
+        dado_out => MemReadData
+    );
+
+    mux_ula_ou_ram : mux_2_entradas
+    PORT MAP(
+        entrada1 => saida_reg_ula,
+        entrada2 => MemReadData,
+        saida => DataMuxUlaRam,
+        seletor => MemRead
+    );
+    mux_endereco_ram : mux2e7bits
+    PORT MAP(
+        entrada1 => saida_banco1(6 DOWNTO 0),
+        entrada2 => saida_banco0(6 DOWNTO 0),
+        saida => MemAddress,
+        seletor => MemRead
+    );
+
+tb_estado <= estado;
+tb_saida_pc <= saida_pc;
+tb_saida_rom <= saida_rom;
+tb_rd1 <= saida_banco1;
+tb_rd0 <= saida_banco0;
+tb_saida_ula <= saida_ula;
 END ARCHITECTURE;

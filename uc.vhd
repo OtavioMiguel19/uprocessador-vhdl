@@ -8,7 +8,9 @@ ENTITY uc IS
         write_enable_x_lt_y_register : OUT std_logic;
         alu_sel : OUT unsigned(2 DOWNTO 0);
         entrada : IN unsigned(12 DOWNTO 0);
-        reg0, reg1, regw : OUT unsigned(2 DOWNTO 0)
+        reg0, reg1, regw : OUT unsigned(2 DOWNTO 0);
+        MemWrite : OUT std_logic;
+        MemRead : OUT std_logic
     );
 END ENTITY;
 
@@ -35,10 +37,16 @@ BEGIN
     write_enable_bancreg <= '1' WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" ELSE
         '0';
 
-    reg0 <= entrada(6 DOWNTO 4) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" OR s_entrada = "0110" ELSE
+    reg0 <= entrada(6 DOWNTO 4) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" OR s_entrada = "0110" OR s_entrada = "1000" OR s_entrada = "0111" ELSE
         "000";
-    reg1 <= entrada(2 DOWNTO 0) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" OR s_entrada = "0110" ELSE
+    reg1 <= entrada(2 DOWNTO 0) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" OR s_entrada = "0110" OR s_entrada = "1000" OR s_entrada = "0111" ELSE
         "000";
-    regw <= entrada(2 DOWNTO 0) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" ELSE
+    regw <= entrada(2 DOWNTO 0) WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" OR s_entrada = "0111" ELSE
         "000";
+
+    MemWrite <= '1' WHEN s_entrada = "1000" ELSE
+        '0';
+
+    MemRead <= '1' WHEN s_entrada = "0111" ELSE
+        '0';
 END ARCHITECTURE;

@@ -15,6 +15,10 @@ ghdl -a reg16bits.vhd
 ghdl -e reg16bits
 ghdl -a rom.vhd
 ghdl -e rom
+ghdl -a ram.vhd
+ghdl -e ram
+ghdl -a mux2e7bits.vhd
+ghdl -e mux2e7bits
 ghdl -a somaum.vhd
 ghdl -e somaum
 ghdl -a uc.vhd
@@ -45,6 +49,10 @@ ghdl -a reg16bits.vhd
 ghdl -e reg16bits
 ghdl -a rom.vhd
 ghdl -e rom
+ghdl -a ram.vhd
+ghdl -e ram
+ghdl -a mux2e7bits.vhd
+ghdl -e mux2e7bits
 ghdl -a somaum.vhd
 ghdl -e somaum
 ghdl -a uc.vhd

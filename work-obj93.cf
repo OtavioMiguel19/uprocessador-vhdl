@@ -1,49 +1,55 @@
 v 4
-file . "ula.vhd" "5557bc3a8f9d92ba9f7aa0d7da916f12d520365e" "20201006224609.141":
-  entity ula at 1( 0) + 0 on 1177;
-  architecture a_ula of ula at 22( 406) + 0 on 1178;
+file . "ram.vhd" "d9570b9cb43a0004e7dd707cf5bd678f182a3eff" "20201010024658.642":
+  entity ram at 1( 0) + 0 on 2327;
+  architecture a_ram of ram at 15( 320) + 0 on 2328;
+file . "jump_controller.vhd" "31ce27b725e872aeda8bf78ca12bb8df20965840" "20201010024659.198":
+  entity jump_controller at 1( 0) + 0 on 2339;
+  architecture a_jump_controller of jump_controller at 15( 408) + 0 on 2340;
+file . "reg1bit.vhd" "d2d5889873aa33612a2e864b7ccf79476cc117f3" "20201010024659.107":
+  entity reg1bit at 1( 0) + 0 on 2337;
+  architecture a_reg1bit of reg1bit at 14( 282) + 0 on 2338;
+file . "processador_tb.vhd" "a8de6979c3fb4af62d962734154c833e721fe2c4" "20201010024659.415":
+  entity processador_tb at 1( 0) + 0 on 2343;
+  architecture a_processador_tb of processador_tb at 8( 108) + 0 on 2344;
+file . "toplevelgeral.vhd" "18fae14dae3c8d766f17a01cf1adafecb2b3386d" "20201010024659.293":
+  entity toplevelgeral at 1( 0) + 0 on 2341;
+  architecture a_toplevelgeral of toplevelgeral at 18( 479) + 0 on 2342;
+file . "uc.vhd" "79de57a2e63c6df055f6a5070306b3b122812ff7" "20201010024658.920":
+  entity uc at 1( 0) + 0 on 2333;
+  architecture a_uc of uc at 17( 484) + 0 on 2334;
+file . "somaum.vhd" "72fe41220b1ceec9e34f4861bcd1162afb074691" "20201010024658.828":
+  entity somaum at 1( 0) + 0 on 2331;
+  architecture a_somaum of somaum at 12( 195) + 0 on 2332;
+file . "reg16bits.vhd" "5b958df737068aca1b1e87352b43ebca0ec5725d" "20201010024658.449":
+  entity reg16bits at 1( 0) + 0 on 2323;
+  architecture a_reg16bits of reg16bits at 14( 308) + 0 on 2324;
+file . "mux_pc.vhd" "cdc9490fcb86ce35262e7a3716992e70ec81d47f" "20201010024658.262":
+  entity mux_pc at 1( 0) + 0 on 2319;
+  architecture a_mux_pc of mux_pc at 14( 411) + 0 on 2320;
+file . "maquina_de_estados.vhd" "3c217e526b2180a7085a874655e09520cf902559" "20201010024658.077":
+  entity maquina_de_estados at 1( 0) + 0 on 2315;
+  architecture a_maquina_de_estados of maquina_de_estados at 14( 281) + 0 on 2316;
+file . "reg13bits.vhd" "4273dca9ad8cbfcce6853934554164ba63eefcb7" "20201010024657.890":
+  entity reg13bits at 1( 0) + 0 on 2311;
+  architecture a_reg13bits of reg13bits at 14( 308) + 0 on 2312;
+file . "bancreg.vhd" "fa9295089a52afcd93466d95e1b334f7a305b754" "20201010024657.981":
+  entity bancreg at 1( 0) + 0 on 2313;
+  architecture a_bancreg of bancreg at 17( 651) + 0 on 2314;
+file . "mux_2_entradas.vhd" "d1c4854414bff9e66a9a511bb13fb9aa2d255130" "20201010024658.171":
+  entity mux_2_entradas at 1( 0) + 0 on 2317;
+  architecture a_mux_2_entradas of mux_2_entradas at 12( 265) + 0 on 2318;
+file . "pc.vhd" "3e577a118ff91891cf031b27b2967fe3045cd7be" "20201010024658.356":
+  entity pc at 1( 0) + 0 on 2321;
+  architecture a_pc of pc at 15( 301) + 0 on 2322;
+file . "rom.vhd" "f1cc2d210fb90a9d5b26a42babd8c94a44d181e2" "20201010024658.548":
+  entity rom at 1( 0) + 0 on 2325;
+  architecture a_rom of rom at 14( 243) + 0 on 2326;
 file . "toplevel.vhd" "9ede5f8273eecca3b9a3b16a31a39aaba4f930e0" "20201006213518.274":
   entity toplevel at 1( 0) + 0 on 379;
   architecture a_toplevel of toplevel at 17( 450) + 0 on 380;
-file . "rom.vhd" "e07890e234164a485a7ff87630e51f52742bef08" "20201006224608.829":
-  entity rom at 1( 0) + 0 on 1171;
-  architecture a_rom of rom at 14( 243) + 0 on 1172;
-file . "pc.vhd" "3e577a118ff91891cf031b27b2967fe3045cd7be" "20201006224608.610":
-  entity pc at 1( 0) + 0 on 1167;
-  architecture a_pc of pc at 15( 301) + 0 on 1168;
-file . "mux_2_entradas.vhd" "d1c4854414bff9e66a9a511bb13fb9aa2d255130" "20201006224608.343":
-  entity mux_2_entradas at 1( 0) + 0 on 1163;
-  architecture a_mux_2_entradas of mux_2_entradas at 12( 265) + 0 on 1164;
-file . "bancreg.vhd" "fa9295089a52afcd93466d95e1b334f7a305b754" "20201006224608.092":
-  entity bancreg at 1( 0) + 0 on 1159;
-  architecture a_bancreg of bancreg at 17( 651) + 0 on 1160;
-file . "reg13bits.vhd" "4273dca9ad8cbfcce6853934554164ba63eefcb7" "20201006224607.957":
-  entity reg13bits at 1( 0) + 0 on 1157;
-  architecture a_reg13bits of reg13bits at 14( 308) + 0 on 1158;
-file . "maquina_de_estados.vhd" "3c217e526b2180a7085a874655e09520cf902559" "20201006224608.219":
-  entity maquina_de_estados at 1( 0) + 0 on 1161;
-  architecture a_maquina_de_estados of maquina_de_estados at 14( 281) + 0 on 1162;
-file . "mux_pc.vhd" "cdc9490fcb86ce35262e7a3716992e70ec81d47f" "20201006224608.475":
-  entity mux_pc at 1( 0) + 0 on 1165;
-  architecture a_mux_pc of mux_pc at 14( 411) + 0 on 1166;
-file . "reg16bits.vhd" "5b958df737068aca1b1e87352b43ebca0ec5725d" "20201006224608.717":
-  entity reg16bits at 1( 0) + 0 on 1169;
-  architecture a_reg16bits of reg16bits at 14( 308) + 0 on 1170;
-file . "somaum.vhd" "72fe41220b1ceec9e34f4861bcd1162afb074691" "20201006224608.925":
-  entity somaum at 1( 0) + 0 on 1173;
-  architecture a_somaum of somaum at 12( 195) + 0 on 1174;
-file . "uc.vhd" "4d4b709ea9b199d6efb6cb9a92c98fa3009e52af" "20201006224609.028":
-  entity uc at 1( 0) + 0 on 1175;
-  architecture a_uc of uc at 15( 415) + 0 on 1176;
-file . "toplevelgeral.vhd" "022be201cc8302520486f0048c346a0b4ae85ae9" "20201006224609.445":
-  entity toplevelgeral at 1( 0) + 0 on 1183;
-  architecture a_toplevelgeral of toplevelgeral at 18( 479) + 0 on 1184;
-file . "processador_tb.vhd" "a8de6979c3fb4af62d962734154c833e721fe2c4" "20201006224609.575":
-  entity processador_tb at 1( 0) + 0 on 1185;
-  architecture a_processador_tb of processador_tb at 8( 108) + 0 on 1186;
-file . "reg1bit.vhd" "d2d5889873aa33612a2e864b7ccf79476cc117f3" "20201006224609.241":
-  entity reg1bit at 1( 0) + 0 on 1179;
-  architecture a_reg1bit of reg1bit at 14( 282) + 0 on 1180;
-file . "jump_controller.vhd" "31ce27b725e872aeda8bf78ca12bb8df20965840" "20201006224609.336":
-  entity jump_controller at 1( 0) + 0 on 1181;
-  architecture a_jump_controller of jump_controller at 15( 408) + 0 on 1182;
+file . "ula.vhd" "5557bc3a8f9d92ba9f7aa0d7da916f12d520365e" "20201010024659.015":
+  entity ula at 1( 0) + 0 on 2335;
+  architecture a_ula of ula at 22( 406) + 0 on 2336;
+file . "mux2e7bits.vhd" "50401a5c19f01cdc455ad32d8a4f2579dc5febc3" "20201010024658.737":
+  entity mux2e7bits at 1( 0) + 0 on 2329;
+  architecture a_mux2e7bits of mux2e7bits at 12( 259) + 0 on 2330;
