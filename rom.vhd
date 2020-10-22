@@ -92,6 +92,52 @@ ARCHITECTURE a_rom OF rom IS
 	5 	=> "0110000110001", --					0x0C23
 	-- JC -3
 	6 	=> "0101100000011", --					0x0B03
+
+
+	--- agora, removo todos os multuplos de 2 usando R4
+	-- ADC #2, R4
+	7 	=> "0001100100100", --					0x0222
+	-- MOV R0, (R4)
+	8 	=> "1000000000100", --					0x0234
+	-- CMP R3, R4 (r4 < r3 ?)
+	9 	=> "0110000110100", --					0x0C23
+	-- JC -3
+	10 	=> "0101100000011", --					0x0B03
+
+
+	--- agora, removo todos os multuplos de 3 usando R5
+	-- ADC #3, R5
+	11 	=> "0001100110101", --					0x0222
+	-- MOV R0, (R5)
+	12 	=> "1000000000101", --					0x0234
+	-- CMP R3, R5 (r5 < r3 ?)
+	13 	=> "0110000110101", --					0x0C23
+	-- JC -3
+	14 	=> "0101100000011", --					0x0B03
+
+
+	--- agora, removo todos os multuplos de 5 usando R6
+	-- ADC #5, R6
+	15 	=> "0001101010110", --					0x0222
+	-- MOV R0, (R6)
+	16 	=> "1000000000110", --					0x0234
+	-- CMP R3, R6 (r6 < r3 ?)
+	17 	=> "0110000110110", --					0x0C23
+	-- JC -3
+	18 	=> "0101100000011", --					0x0B03
+
+
+	--- agora, removo todos os multuplos de 7 usando R7
+	-- ADC #7, R7
+	19 	=> "0001101110111", --					0x0222
+	-- MOV R0, (R7)
+	20 	=> "1000000000111", --					0x0234
+	-- CMP R3, R7 (r7 < r3 ?)
+	21 	=> "0110000110111", --					0x0C23
+	-- JC -3
+	22 	=> "0101100000011", --					0x0B03
+
+
 	-- abaixo: casos omissos => (zero em todos os bits)
 	OTHERS => (OTHERS => '0')
 	);
