@@ -69,7 +69,7 @@ ghdl -e toplevelgeral
 
 ghdl -a processador_tb.vhd
 ghdl -e processador_tb
-ghdl -r processador_tb --stop-time=100000ns --wave=processador_tb.ghw
+ghdl -r processador_tb --stop-time=150000ns --wave=processador_tb.ghw
 gtkwave processador_tb.ghw --save=OndaProc.gtkw
 PAUSE
 
