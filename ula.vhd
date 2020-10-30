@@ -32,4 +32,5 @@ BEGIN
 		"0";
 	x_lt_y <= '1' WHEN x < y ELSE
 		'0';
+		-- a atualizacao do valor do carry não funciona para somas, embora devesse
 END ARCHITECTURE;

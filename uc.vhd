@@ -31,7 +31,7 @@ BEGIN
         "010" WHEN s_entrada = "0100" ELSE
         "111";
     write_enable_x_lt_y_register <= '1' WHEN s_entrada = "0110" ELSE
-        '0';
+        '0';-- a atualizacao do valor do carry não funciona para somas, embora devesse
     use_constant <= '1' WHEN entrada(8 DOWNTO 8) = "1" ELSE
         '0';
     write_enable_bancreg <= '1' WHEN s_entrada = "0001" OR s_entrada = "0010" OR s_entrada = "0100" ELSE

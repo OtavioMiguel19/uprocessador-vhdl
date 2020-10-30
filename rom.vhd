@@ -17,7 +17,7 @@ ARCHITECTURE a_rom OF rom IS
 
 	-- -----------------------------------------------------------
 	-- 00010	ADD
-	-- 00011	ADC
+	-- 00011	ADD
 
 	-- 00100	---
 	-- 00101	DEC
@@ -75,18 +75,18 @@ ARCHITECTURE a_rom OF rom IS
 
 	--pg 6
 	--- primeiro, coloca o valor 32 no R3
-	-- ADC #15, R3
+	-- ADD #15, R3
 	0 	=> "0001111110011", --					0x0303
-	-- ADC #15, R3
+	-- ADD #15, R3
 	1 	=> "0001111110011", --					0x0304
-	-- ADC #2, R3
+	-- ADD #2, R3
 	2 	=> "0001100100011", --					0x03F2
 
 
 	--- agora, preenche os endereços da ram com os numeros
-	-- ADC #1, R1
+	-- ADD #1, R1
 	3 	=> "0001100010001", --					0x0222
-	-- MOV R1, (R1)
+	-- MOV R1, @R1
 	4 	=> "1000000010001", --					0x0234
 	-- CMP R3, R1 (r1 < r3 ?)
 	5 	=> "0110000110001", --					0x0C23
@@ -95,10 +95,10 @@ ARCHITECTURE a_rom OF rom IS
 
 
 	--- agora, removo todos os multuplos de 2 usando R4
-	-- ADC #2, R4
+	-- ADD #2, R4
 	7 	=> "0001100100100", --					0x0222
 	8 	=> "0001100100100", --					0x0222
-	-- MOV R0, (R4)
+	-- MOV R0, @R4
 	9 	=> "1000000000100", --					0x0234
 	-- CMP R3, R4 (r4 < r3 ?)
 	10 	=> "0110000110100", --					0x0C23
@@ -107,10 +107,10 @@ ARCHITECTURE a_rom OF rom IS
 
 
 	--- agora, removo todos os multuplos de 3 usando R5
-	-- ADC #3, R5
+	-- ADD #3, R5
 	12 	=> "0001100110101", --					0x0222
 	13 	=> "0001100110101", --					0x0222
-	-- MOV R0, (R5)
+	-- MOV R0, @R5
 	14 	=> "1000000000101", --					0x0234
 	-- CMP R3, R5 (r5 < r3 ?)
 	15 	=> "0110000110101", --					0x0C23
@@ -119,10 +119,10 @@ ARCHITECTURE a_rom OF rom IS
 
 
 	--- agora, removo todos os multuplos de 5 usando R6
-	-- ADC #5, R6
+	-- ADD #5, R6
 	17 	=> "0001101010110", --					0x0222
 	18 	=> "0001101010110", --					0x0222
-	-- MOV R0, (R6)
+	-- MOV R0, @R6
 	19 	=> "1000000000110", --					0x0234
 	-- CMP R3, R6 (r6 < r3 ?)
 	20 	=> "0110000110110", --					0x0C23
@@ -131,10 +131,10 @@ ARCHITECTURE a_rom OF rom IS
 
 
 	--- agora, removo todos os multuplos de 7 usando R7
-	-- ADC #7, R7
+	-- ADD #7, R7
 	22 	=> "0001101110111", --					0x0222
 	23 	=> "0001101110111", --					0x0222
-	-- MOV R0, (R7)
+	-- MOV R0, @R7
 	24 	=> "1000000000111", --					0x0234
 	-- CMP R3, R7 (r7 < r3 ?)
 	25 	=> "0110000110111", --					0x0C23
@@ -143,9 +143,9 @@ ARCHITECTURE a_rom OF rom IS
 
 
 	--- agora, para fechar com chave de ouro, preenche o r1 com os numeros, um por um, usando o r2
-	-- ADC #1, R2
+	-- ADD #1, R2
 	27 	=> "0001100010010", --					0x0222
-	-- MOV (R2), R1
+	-- MOV @R2, R1
 	28 	=> "0111000100001", --					0x0234
 	-- CMP R3, R2 (r2 < r3 ?)
 	29 	=> "0110000110010", --					0x0C23

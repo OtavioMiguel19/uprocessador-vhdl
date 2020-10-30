@@ -269,7 +269,7 @@ BEGIN
         reg0 => s_reg0,
         reg1 => s_reg1,
         regw => s_regw,
-        write_enable_x_lt_y_register => write_enable_x_lt_y_register,
+        write_enable_x_lt_y_register => write_enable_x_lt_y_register,-- a atualizacao do valor do carry não funciona para somas, embora devesse
         MemWrite => MemWrite,
         MemRead => MemRead
     );
@@ -335,8 +335,8 @@ BEGIN
     PORT MAP(
         clk => clk,
         rst => rst,
-        wr_en => write_enable_x_lt_y_register,
-        data_in => x_lt_y,
+        wr_en => write_enable_x_lt_y_register,-- a atualizacao do valor do carry não funciona para somas, embora devesse
+        data_in => x_lt_y,-- a atualizacao do valor do carry não funciona para somas, embora devesse
         data_out => x_lt_y_from_reg
     );
 
